@@ -187,8 +187,8 @@ Position GetPos (int currentRoad, chrono::milliseconds currentTime)
 
     if (progress > 1.0f) progress = 1.0f;
 
-    return { ((positions.at((currentRoad + 1) % positions.size()).x - positions.at(currentRoad).x) * progress) + positions.at(currentRoad).x,       //pos2.x - pos1.x * progress + pos1.x
-             ((positions.at((currentRoad + 1) % positions.size()).y - positions.at(currentRoad).y) * progress) + positions.at(currentRoad).y };     //pos2.y - pos1.y * progress + pos1.y
+    return { ((positions.at((currentRoad + 1) % positions.size()).x - positions.at(currentRoad).x) * progress) + positions.at(currentRoad).x,       //(pos2.x - pos1.x) * progress + pos1.x
+             ((positions.at((currentRoad + 1) % positions.size()).y - positions.at(currentRoad).y) * progress) + positions.at(currentRoad).y };     //(pos2.y - pos1.y) * progress + pos1.y
 };
 
 

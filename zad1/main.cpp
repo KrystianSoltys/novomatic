@@ -214,12 +214,12 @@ public:
         if (ref.size() <= conrollingFig) return; //controlling fig out of scope
     
 
-        if (_getch() == 224) { // if the first value is esc
+        if (_getch() == 224) {
 
             int addX = 0;
             int addY = 0;
 
-            switch (_getch()) { // the real value
+            switch (_getch()) { 
             case 72: //up
                 addY = -1;
                 break;
@@ -260,7 +260,7 @@ public:
 
 private:
     Screen& _screen;
-    int conrollingFig;
+    int conrollingFig=0;
 };
 
 
@@ -292,7 +292,8 @@ int main()
     screen.addFigure(triangle(std::array<vec2, 3>({ {40,7}, {30,17}, {50,17} })));
 
     controller.setControllingFigure(0);
-    while (true)
+    
+    while (1)
     {
         screen.print();
         controller.waitForInput();

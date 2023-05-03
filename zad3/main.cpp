@@ -26,15 +26,29 @@ void TrimIf(std::string& str, std::function<bool(char)> func)
 
 bool isWhitespace(char c)
 {
-	return (c == 'x') ? true : false;
+	return (c == ' ') ? true : false;
 }
+
+class IsDigit
+{
+public:
+    bool operator()(char c) {return (c>='0' && c<='9') ? true : false;}
+};
 
 int main()
 {
-	std::string x = "xxdasda d da xx";
+	std::string a = "xxxxAla ma kotaxxxxxxxx";
+    TrimIf(a, [](char c) {return c == 'x' ? true : false; });
 
-	TrimIf(x, [](char c) {return c == 'x' ? true : false; });
+    std::string b = "   przykładowy string  ";
+    TrimIf(b, &isWhitespace);
 
-	std::cout << x;
+    IsDigit isd;
+    std::string c = "3Abc12";
+    TrimIf(c, isd);
+
+    std::cout << "Test #1: " << ((a == "Ala ma kota") ? "passed" : "failed") << std::endl;
+    std::cout << "Test #2: " << ((b == "przykładowy string") ? "passed" : "failed") << std::endl;
+    std::cout << "Test #3: " << ((c == "Abc") ? "passed" : "failed") << std::endl;
+
 }
-
